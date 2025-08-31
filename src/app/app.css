@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+:root {
+  --background: #564186;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  flex-grow: 1;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 3rem;
+  color: #564186;
+}
+
+.text {
+  font-size: 1.5rem;
+  color: #564186;
+}
+
+.form-title {
+  font-size: 2rem;
+  color: white;
+}
+
+.form-text{
+  font-size: 1rem;
+  color: #fff;
+}

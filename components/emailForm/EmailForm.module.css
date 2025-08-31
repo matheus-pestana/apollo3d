@@ -1,0 +1,71 @@
+.formContainer {
+  width: 100%;
+  max-width: 500px;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.form {
+  display: flex;
+  width: 100%;
+  border: 1px solid #564186;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #1a1a1a;
+}
+
+.emailInput {
+  flex-grow: 1;
+  border: none;
+  background: transparent;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  color: #ededed;
+  outline: none;
+}
+
+.emailInput::placeholder {
+  color: #a0a0a0;
+}
+
+.submitButton {
+  border: none;
+  background-color: #564186;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submitButton:hover {
+  background-color: #46336d;
+}
+
+.submitButton:disabled {
+  background-color: #3a2a5a;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.statusMessage {
+  font-size: 0.9rem;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.successMessage {
+  color: #c8e6c9;
+  background-color: #1b5e20;
+}
+
+.errorMessage {
+  color: #ffcdd2;
+  background-color: #c62828;
+}
