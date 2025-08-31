@@ -1,44 +1,59 @@
-@import "tailwindcss";
-
-:root {
-  --background: #564186;
-  --foreground: #171717;
+/* --- Estilos Globais e Reset --- */
+*,
+*::before,
+*::after {
+  /* Regra de ouro: Garante que padding e border não aumentem o tamanho dos elementos. */
+  box-sizing: border-box;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html {
+  /* Garante que o html ocupe toda a altura, ajudando o sticky footer. */
+  height: 100%;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body, html {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  color: #ededed;
+  font-family: sans-serif; /* Adicione sua fonte aqui */
+  /* Previne barras de rolagem horizontais indesejadas */
+  overflow-x: hidden;
 }
 
+/* Garante que o layout ocupe a tela toda e o footer fique no final */
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100%; /* Usa 100% para melhor compatibilidade com o html height */
 }
 
+/* ---- Estilos da Página Principal ---- */
 main {
-  display: flex;
-  justify-content: center;
-  background-color: black;
-  flex-grow: 1;
-}
+  /* Ocupa o espaço disponível para empurrar o footer */
+  flex-grow: 1; 
 
-.container {
+  /* Centraliza o container principal na tela */
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10rem;
+  
+  /* Adiciona um "respiro" para não colar nas bordas */
+  padding: 2rem 1rem; 
 }
 
+.container {
+  width: 100%;
+  max-width: 1200px; /* Limita a largura em telas muito grandes */
+  
+  /* Layout de duas colunas em telas grandes */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 3rem; /* Espaço entre as colunas */
+}
+
+/* --- Coluna da Esquerda (Conteúdo) --- */
 .content {
   display: flex;
   flex-direction: column;
@@ -46,23 +61,87 @@ main {
   text-align: center;
 }
 
+.logo {
+  /* A imagem nunca será maior que 400px, mas pode diminuir */
+  max-width: 400px; 
+  width: 100%; /* Faz a imagem se ajustar à largura do contêiner */
+  height: auto; /* Mantém a proporção da imagem */
+}
+
 .title {
   font-weight: bold;
-  font-size: 3rem;
+  font-size: 3rem; /* 48px */
   color: #564186;
+  margin-top: 1rem;
 }
 
 .text {
-  font-size: 1.5rem;
-  color: #564186;
+  font-size: 1.5rem; /* 24px */
+  color: #a0a0a0;
+  margin-top: 0.5rem;
+  max-width: 500px; /* Evita que o texto fique muito largo */
+}
+
+/* --- Coluna da Direita (Formulário) --- */
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
 }
 
 .form-title {
-  font-size: 2rem;
-  color: white;
+  font-size: 2.5rem; /* 40px */
+  font-weight: bold;
+  color: #ededed;
 }
 
-.form-text{
-  font-size: 1rem;
-  color: #fff;
+.form-text {
+  font-size: 1.1rem; /* 17.6px */
+  color: #a0a0a0;
+  margin-top: 0.5rem;
+}
+
+/* =========================================== */
+/* === PONTO DE VIRADA 1: TABLETS E TELAS MENORES === */
+/* =========================================== */
+@media (max-width: 900px) {
+  .container {
+    /* Transforma o layout de duas colunas em uma única coluna */
+    flex-direction: column;
+    gap: 4rem; /* Aumenta o espaço vertical entre as seções */
+  }
+}
+
+/* =========================================== */
+/* === PONTO DE VIRADA 2: CELULARES === */
+/* =========================================== */
+@media (max-width: 480px) {
+  main {
+    /* Reduz o padding em telas muito pequenas */
+    padding: 2rem 0.5rem;
+  }
+
+  .logo {
+    /* Diminui o tamanho máximo da logo em celulares */
+    max-width: 250px;
+  }
+
+  .title {
+    font-size: 2.25rem; /* 36px */
+  }
+
+  .text {
+    font-size: 1.125rem; /* 18px */
+  }
+
+  .form-title {
+    font-size: 2rem; /* 32px */
+  }
+
+  .form-text {
+    font-size: 1rem; /* 16px */
+  }
 }
