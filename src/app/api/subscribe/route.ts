@@ -49,7 +49,7 @@ export async function POST(request: Request) {
     try {
       // Passo 2: Dispara o e-mail de confirmação usando o Resend
       await resend.emails.send({
-        from: 'Apollo3D <contato@seu-dominio-verificado.com.br>', // IMPORTANTE: Use o domínio que você verificou!
+        from: 'Apollo3D <apollo3dson@gmail.com>', // IMPORTANTE: Use o domínio que você verificou!
         to: [email],
         subject: 'Inscrição Confirmada! | Apollo3D',
         // Usa o componente React para renderizar o corpo do e-mail
