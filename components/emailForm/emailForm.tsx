@@ -36,9 +36,13 @@ export default function EmailForm() {
       setMessage('Obrigado! Avisaremos você no lançamento.');
       setEmail(''); // Limpa o campo de e-mail
 
-    } catch (error: any) {
+    } catch (error: unknown) {
       setStatus('error');
-      setMessage(error.message || 'Algo deu errado. Tente novamente.');
+      if (error instanceof Error) {
+        setMessage(error.message || 'Algo deu errado. Tente novamente.');
+      } else {
+        setMessage('Algo deu errado. Tente novamente.');
+      }
     }
   };
 
