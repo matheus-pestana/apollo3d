@@ -24,7 +24,7 @@ export const WelcomeEmail = ({ userEmail }: WelcomeEmailProps) => (
     <Body style={main}>
       <Container style={container}>
         <Img
-          src={`https://i.imgur.com/your-logo-id.png`} // SUBSTITUA pela URL da sua logo
+          src={`https://imgur.com/a/9Blecqv`}
           width="150"
           height="auto"
           alt="Apollo3D Logo"
