@@ -13,10 +13,6 @@ interface WelcomeEmailProps {
   userEmail: string;
 }
 
-const baseUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : '';
-
 export const WelcomeEmail = ({ userEmail }: WelcomeEmailProps) => (
   <Html>
     <Head />
@@ -24,7 +20,7 @@ export const WelcomeEmail = ({ userEmail }: WelcomeEmailProps) => (
     <Body style={main}>
       <Container style={container}>
         <Img
-          src={`https://imgur.com/a/9Blecqv`}
+          src={`https://imgur.com/4S2o55i.png`}
           width="150"
           height="auto"
           alt="Apollo3D Logo"
