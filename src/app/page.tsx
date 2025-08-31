@@ -23,7 +23,6 @@ export default function ComingSoonPage() {
             Informe seu e-mail para ser notificado do lançamento do site.
           </p>
 
-          {/* Usando o componente de formulário aqui */}
           <EmailForm />
         </div>
       </div>

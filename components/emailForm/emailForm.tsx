@@ -22,19 +22,29 @@ export default function EmailForm() {
     }
 
     try {
-      // AQUI É ONDE VOCÊ FARIA A CHAMADA PARA SUA API
-      // Por enquanto, vamos apenas simular uma chamada de rede
-      await new Promise(resolve => setTimeout(resolve, 1500)); 
+      // --- INÍCIO DA ATUALIZAÇÃO ---
+      // Faz a chamada real para a API que criamos
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
 
-      // Simular um erro para teste
-      if (email === 'fail@example.com') {
-        throw new Error('Este e-mail já está cadastrado em outro lugar.');
+      const result = await response.json();
+
+      if (!response.ok) {
+        // Se a API retornar um erro (status 400, 500, etc.), lança um erro
+        // para ser pego pelo bloco catch
+        throw new Error(result.message || 'Falha ao se inscrever.');
       }
-
+      
       // Sucesso!
       setStatus('success');
-      setMessage('Obrigado! Avisaremos você no lançamento.');
+      setMessage(result.message || 'Obrigado! Avisaremos você no lançamento.');
       setEmail(''); // Limpa o campo de e-mail
+      // --- FIM DA ATUALIZAÇÃO ---
 
     } catch (error: unknown) {
       setStatus('error');
@@ -46,6 +56,7 @@ export default function EmailForm() {
     }
   };
 
+  // O JSX do return não precisa de nenhuma alteração.
   return (
     <div className={styles.formContainer}>
       <form onSubmit={handleSubmit} className={styles.form}>
